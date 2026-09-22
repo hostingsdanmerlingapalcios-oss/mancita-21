@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mancita 💛</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    font-family:Georgia,serif;
+}
+
+/* =========================
+   PORTADA
+========================= */
+
+#inicio{
+    position:fixed;
+    inset:0;
+    z-index:10;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #6b4b00 0%,
+            #241900 30%,
+            #080700 65%,
+            #000 100%
+        );
+}
+
+.portada{
+    padding:25px;
+}
+
+.portada h1{
+    color:#ffd83d;
+    font-size:clamp(50px,12vw,90px);
+
+    text-shadow:
+        0 0 10px #ffd000,
+        0 0 30px #ff9d00,
+        0 0 70px #ff7000;
+}
+
+.portada h2{
+    margin-top:12px;
+    color:#fff0a0;
+    letter-spacing:5px;
+    font-size:clamp(18px,4vw,30px);
+}
+
+.portada p{
+    margin-top:16px;
+    color:#ffe88a;
+    letter-spacing:3px;
+    font-size:13px;
+}
+
+.corazon{
+    width:70px;
+    height:70px;
+    margin:45px auto;
+
+    background:#ffd21c;
+    transform:rotate(-45deg);
+
+    box-shadow:
+        0 0 20px #ffd21c,
+        0 0 60px #ff9d00;
+
+    animation:latido 1.5s infinite;
+}
+
+.corazon:before,
+.corazon:after{
+    content:"";
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+    background:#ffd21c;
+}
+
+.corazon:before{
+    top:-35px;
+}
+
+.corazon:after{
+    left:35px;
+}
+
+@keyframes latido{
+    50%{
+        transform:rotate(-45deg) scale(1.12);
+    }
+}
+
+.boton{
+    padding:16px 30px;
+
+    border:2px solid #ffd83d;
+    border-radius:40px;
+
+    background:rgba(255,190,0,.12);
+
+    color:#ffe990;
+
+    font-size:14px;
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 15px #ffbf00,
+        inset 0 0 15px rgba(255,210,50,.15);
+}
+
+/* =========================
+   UNIVERSO
+========================= */
+
+#garden{
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    overflow:hidden;
+    background:#000;
+
+    z-index:20;
+}
+
+.universo{
+    position:absolute;
+
+    width:110%;
+    height:110%;
+
+    left:-5%;
+    top:-5%;
+
+    background-image:url("Imagen de WhatsApp 2026-09-21 a la 1.02.41 AM (1).jpeg");
+
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+
+    transform:scale(1.05);
+
+    will-change:transform;
+
+    animation:
+        universoMovimiento 18s ease-in-out infinite alternate,
+        universoBrillo 7s ease-in-out infinite alternate;
+}
+
+@keyframes universoMovimiento{
+
+    0%{
+        transform:
+            scale(1.05)
+            translate3d(-1%,0,0);
+    }
+
+    25%{
+        transform:
+            scale(1.08)
+            translate3d(.5%,-.4%,0);
+    }
+
+    50%{
+        transform:
+            scale(1.10)
+            translate3d(1%,.5%,0);
+    }
+
+    75%{
+        transform:
+            scale(1.08)
+            translate3d(-.5%,.7%,0);
+    }
+
+    100%{
+        transform:
+            scale(1.05)
+            translate3d(-1%,0,0);
+    }
+}
+
+@keyframes universoBrillo{
+
+    0%{
+        filter:brightness(.95) saturate(1);
+    }
+
+    50%{
+        filter:brightness(1.08) saturate(1.12);
+    }
+
+    100%{
+        filter:brightness(1) saturate(1.05);
+    }
+}
+
+/* =========================
+   LUZ SOBRE EL UNIVERSO
+========================= */
+
+.luz{
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+    z-index:2;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 45%,
+            rgba(0,0,0,.08) 65%,
+            rgba(0,0,0,.48) 100%
+        );
+}
+
+/* =========================
+   ESTRELLAS EN MOVIMIENTO
+========================= */
+
+#particles{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:3;
+
+    pointer-events:none;
+}
+
+/* =========================
+   TITULO
+========================= */
+
+.titulo{
+    position:absolute;
+
+    top:7%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:5;
+
+    text-align:center;
+
+    white-space:nowrap;
+
+    color:#fff1a0;
+
+    text-shadow:
+        0 0 7px #fff,
+        0 0 15px #ffd21c,
+        0 0 35px #ff9900;
+}
+
+.titulo h2{
+    font-size:clamp(30px,6vw,58px);
+}
+
+.titulo p{
+    margin-top:10px;
+
+    font-size:12px;
+    letter-spacing:5px;
+}
+
+/* =========================
+   BOTON DEDICATORIA
+========================= */
+
+.abrir{
+    position:absolute;
+
+    bottom:8%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:7;
+
+    padding:17px 38px;
+
+    border:2px solid #ffd21c;
+    border-radius:40px;
+
+    background:rgba(10,8,0,.55);
+
+    color:#fff0a0;
+
+    font-size:13px;
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 10px #ffd21c,
+        0 0 30px #ff9d00;
+
+    transition:.3s;
+}
+
+.abrir:hover{
+    background:#ffd21c;
+    color:#281700;
+
+    box-shadow:
+        0 0 20px #fff,
+        0 0 50px #ffd21c;
+}
+
+/* =========================
+   CARTA
+========================= */
+
+#letterArea{
+    position:absolute;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    z-index:50;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+}
+
+.carta{
+    width:min(90%,500px);
+    max-height:80vh;
+
+    overflow:auto;
+
+    padding:35px 25px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff5a8,
+            #ffe477,
+            #fff1a0
+        );
+
+    color:#4b3500;
+
+    text-align:center;
+
+    box-shadow:
+        0 0 25px #ffd21c,
+        0 0 70px rgba(255,160,0,.6);
+
+    animation:entrada .7s ease;
+}
+
+.carta h2{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.carta p{
+    font-size:17px;
+    line-height:1.7;
+}
+
+.cerrar{
+    margin-top:25px;
+
+    padding:10px 25px;
+
+    border:0;
+    border-radius:25px;
+
+    background:#624500;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+@keyframes entrada{
+
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media(max-width:600px){
+
+    .titulo{
+        top:8%;
+    }
+
+    .titulo h2{
+        font-size:28px;
+    }
+
+    .titulo p{
+        font-size:8px;
+        letter-spacing:3px;
+    }
+
+    .abrir{
+        bottom:7%;
+        padding:14px 25px;
+        font-size:11px;
+    }
+
+    .portada h1{
+        font-size:55px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     PORTADA
+========================= -->
+
+<section id="inicio">
+
+    <div class="portada">
+
+        <h1>Para Mancita</h1>
+
+        <h2>21 · SIEMPRE 💛</h2>
+
+        <p>UN PEQUEÑO UNIVERSO HECHO PARA TI</p>
+
+        <div class="corazon"></div>
+
+        <button class="boton" onclick="abrirJardin()">
+            ENTRAR A MI UNIVERSO ✨
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     UNIVERSO
+========================= -->
+
+<section id="garden">
+
+    <div class="universo"></div>
+
+    <div class="luz"></div>
+
+    <canvas id="particles"></canvas>
+
+
+    <!-- TITULO -->
+
+    <div class="titulo">
+
+        <h2>Para ti, Mancita 🌻</h2>
+
+        <p>UN PEQUEÑO UNIVERSO PARA TI</p>
+
+    </div>
+
+
+    <!-- BOTON -->
+
+    <button class="abrir" onclick="abrirCarta()">
+        ABRIR MI DEDICATORIA 💛
+    </button>
+
+
+    <!-- CARTA -->
+
+    <div id="letterArea">
+
+        <div class="carta">
+
+            <h2>Para ti, Mancita 🌻</h2>
+
+            <p>
+                Hay personas que hacen que nuestro
+                mundo se vuelva un poquito más especial.
+                <br><br>
+
+                Por eso quise crear este pequeño universo
+                para ti, lleno de luz, estrellas y girasoles.
+                <br><br>
+
+                Espero que este detalle te saque
+                una sonrisa. 💛
+                <br><br>
+
+                <strong>Feliz 21. 🌻✨</strong>
+            </p>
+
+            <button class="cerrar" onclick="cerrarCarta()">
+                CERRAR
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   ABRIR UNIVERSO
+========================= */
+
+function abrirJardin(){
+
+    document.getElementById("inicio").style.display="none";
+
+    document.getElementById("garden").style.display="block";
+
+    iniciarParticulas();
+}
+
+
+/* =========================
+   CARTA
+========================= */
+
+function abrirCarta(){
+
+    document.getElementById("letterArea").style.display="flex";
+}
+
+
+function cerrarCarta(){
+
+    document.getElementById("letterArea").style.display="none";
+}
+
+
+/* =========================
+   ESTRELLAS
+========================= */
+
+let iniciado=false;
+
+function iniciarParticulas(){
+
+    if(iniciado) return;
+
+    iniciado=true;
+
+    const canvas=document.getElementById("particles");
+
+    const ctx=canvas.getContext("2d");
+
+    let w=window.innerWidth;
+    let h=window.innerHeight;
+
+
+    function cambiarTamaño(){
+
+        w=window.innerWidth;
+        h=window.innerHeight;
+
+        canvas.width=w;
+        canvas.height=h;
+    }
+
+    cambiarTamaño();
+
+    window.addEventListener("resize",cambiarTamaño);
+
+
+    const estrellas=[];
+
+    const cantidad=w<600 ? 90 : 170;
+
+
+    for(let i=0;i<cantidad;i++){
+
+        estrellas.push({
+
+            x:Math.random()*w,
+
+            y:Math.random()*h,
+
+            r:Math.random()*1.6+.3,
+
+            velocidad:Math.random()*.35+.04,
+
+            brillo:Math.random()*Math.PI*2
+
+        });
+
+    }
+
+
+    function animar(){
+
+        ctx.clearRect(0,0,w,h);
+
+
+        estrellas.forEach(e=>{
+
+            e.y-=e.velocidad;
+
+            if(e.y<0){
+
+                e.y=h;
+
+                e.x=Math.random()*w;
+
+            }
+
+            e.brillo+=.025;
+
+
+            const alpha=
+                .25+
+                Math.sin(e.brillo)*.4;
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                e.x,
+                e.y,
+                e.r,
+                0,
+                Math.PI*2
+            );
+
+
+            ctx.fillStyle=
+                "rgba(255,225,90,"+
+                alpha+
+                ")";
+
+
+            ctx.shadowBlur=7;
+
+            ctx.shadowColor="#ffd21c";
+
+            ctx.fill();
+
+        });
+
+
+        ctx.shadowBlur=0;
+
+        requestAnimationFrame(animar);
+    }
+
+
+    animar();
+}
+
+
+/* =========================
+   MOVIMIENTO CON RATON
+========================= */
+
+const universo=
+    document.querySelector(".universo");
+
+let objetivoX=0;
+let objetivoY=0;
+
+let actualX=0;
+let actualY=0;
+
+
+window.addEventListener("mousemove",(e)=>{
+
+    objetivoX=
+        e.clientX/window.innerWidth-.5;
+
+    objetivoY=
+        e.clientY/window.innerHeight-.5;
+
+});
+
+
+/* =========================
+   MOVIMIENTO CON DEDO
+========================= */
+
+window.addEventListener("touchmove",(e)=>{
+
+    if(!e.touches.length)return;
+
+    objetivoX=
+        e.touches[0].clientX/window.innerWidth-.5;
+
+    objetivoY=
+        e.touches[0].clientY/window.innerHeight-.5;
+
+},{passive:true});
+
+
+/* =========================
+   PARALLAX
+========================= */
+
+function moverUniverso(){
+
+    actualX+=
+        (objetivoX-actualX)*.025;
+
+    actualY+=
+        (objetivoY-actualY)*.025;
+
+
+    if(universo){
+
+        universo.style.marginLeft=
+            (actualX*18)+"px";
+
+        universo.style.marginTop=
+            (actualY*12)+"px";
+    }
+
+
+    requestAnimationFrame(moverUniverso);
+}
+
+moverUniverso();
+
+</script>
+
+</body>
+</html>
